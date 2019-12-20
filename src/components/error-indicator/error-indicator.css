@@ -1,0 +1,16 @@
+.error-indicator {
+  color: rgb(228, 141, 41);
+  text-align: center;
+  margin: 0 auto;
+  width: 250px;
+}
+
+.boom {
+  display: block;
+  font-size: 23px;
+  font-weight: bold;
+}
+
+.boom + span {
+  display: block;
+}
