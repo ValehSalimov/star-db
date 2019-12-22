@@ -5,21 +5,26 @@ import RandomPlanet from '../random-planet';
 import ErrorButton from '../error-button';
 import ErrorIndicator from '../error-indicator';
 import PeoplePage from '../people-page';
+import ItemList from '../item-list';
+import PersonDetails from '../person-details';
+import SwapiService from '../../services/swapi-service';
+import Row from '../row';
 
 import './app.css';
 
 export default class App extends Component {
+  swapiService = new SwapiService();
 
   state = {
     showRandomPlanet: true,
-    hasError: false
+    hasError: false,
   };
 
   toggleRandomPlanet = () => {
-    this.setState((state) => {
+    this.setState(state => {
       return {
-        showRandomPlanet: !state.showRandomPlanet
-      }
+        showRandomPlanet: !state.showRandomPlanet,
+      };
     });
   };
 
@@ -28,19 +33,16 @@ export default class App extends Component {
   }
 
   render() {
-
     if (this.state.hasError) {
-      return <ErrorIndicator />
+      return <ErrorIndicator />;
     }
 
-    const planet = this.state.showRandomPlanet ?
-      <RandomPlanet/> :
-      null;
+    const planet = this.state.showRandomPlanet ? <RandomPlanet /> : null;
 
     return (
       <div className="stardb-app">
         <Header />
-        { planet }
+        {planet}
 
         <div className="row mb2 button-row">
           <button
@@ -52,6 +54,32 @@ export default class App extends Component {
         </div>
 
         <PeoplePage />
+
+        <Row
+          left={
+            <ItemList
+              onItemSelected={this.onPersonSelected}
+              getData={this.swapiService.getAllPlanets}
+              renderItem={item => (
+                <span>
+                  {item.name} <button>!</button>
+                </span>
+              )}
+            />
+          }
+          right={<PersonDetails personId={this.state.selectedPerson} />}
+        />
+
+        <Row
+          left={
+            <ItemList
+              onItemSelected={this.onPersonSelected}
+              getData={this.swapiService.getAllStarships}
+              renderItem={item => item.name}
+            />
+          }
+          right={<PersonDetails personId={this.state.selectedPerson} />}
+        />
 
       </div>
     );

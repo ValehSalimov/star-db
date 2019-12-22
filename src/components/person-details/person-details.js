@@ -45,6 +45,7 @@ export default class PersonDetails extends Component {
     const { id, name, gender,
               birthYear, eyeColor } = person;
 
+             
     return (
       <div className="person-details card">
         <img className="person-image"
