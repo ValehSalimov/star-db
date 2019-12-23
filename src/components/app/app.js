@@ -6,7 +6,7 @@ import ErrorButton from '../error-button';
 import ErrorIndicator from '../error-indicator';
 import PeoplePage from '../people-page';
 import ItemList from '../item-list';
-import PersonDetails from '../item-details';
+import ItemDetails from '../item-details';
 import SwapiService from '../../services/swapi-service';
 import Row from '../row';
 
@@ -39,48 +39,32 @@ export default class App extends Component {
 
     const planet = this.state.showRandomPlanet ? <RandomPlanet /> : null;
 
+    const { getPerson, getStarship, getPersonImage, getStarshipImage } = this.swapiService;
+
+    const personDetails = (
+      <ItemDetails itemId={11} getData={getPerson} getImageUrl={getPersonImage} />
+    );
+    const starshipDetails = (
+      <ItemDetails itemId={5} getData={getStarship} getImageUrl={getStarshipImage} />
+    );
+
     return (
       <div className="stardb-app">
         <Header />
         {planet}
 
-        <div className="row mb2 button-row">
+        {/* <div className="row mb2 button-row">
           <button
             className="toggle-planet btn btn-warning btn-lg"
             onClick={this.toggleRandomPlanet}>
             Toggle Random Planet
           </button>
           <ErrorButton />
-        </div>
+        </div> */}
 
-        <PeoplePage />
+        {/* <PeoplePage /> */}
 
-        {/* <Row
-          left={
-            <ItemList
-              onItemSelected={this.onPersonSelected}
-              getData={this.swapiService.getAllPlanets}
-              renderItem={item => (
-                <span>
-                  {item.name} <button>!</button>
-                </span>
-              )}
-            />
-          }
-          right={<PersonDetails personId={this.state.selectedPerson} />}
-        />
-
-        <Row
-          left={
-            <ItemList
-              onItemSelected={this.onPersonSelected}
-              getData={this.swapiService.getAllStarships}
-              renderItem={item => item.name}
-            />
-          }
-          right={<PersonDetails personId={this.state.selectedPerson} />}
-        /> */}
-
+        <Row left={personDetails} right={starshipDetails} />
       </div>
     );
   }
