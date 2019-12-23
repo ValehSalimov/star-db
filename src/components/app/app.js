@@ -6,7 +6,7 @@ import ErrorButton from '../error-button';
 import ErrorIndicator from '../error-indicator';
 import PeoplePage from '../people-page';
 import ItemList from '../item-list';
-import PersonDetails from '../person-details';
+import PersonDetails from '../item-details';
 import SwapiService from '../../services/swapi-service';
 import Row from '../row';
 
@@ -55,7 +55,7 @@ export default class App extends Component {
 
         <PeoplePage />
 
-        <Row
+        {/* <Row
           left={
             <ItemList
               onItemSelected={this.onPersonSelected}
@@ -79,7 +79,7 @@ export default class App extends Component {
             />
           }
           right={<PersonDetails personId={this.state.selectedPerson} />}
-        />
+        /> */}
 
       </div>
     );
