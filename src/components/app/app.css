@@ -9,3 +9,8 @@
 .stardb-app .row {
   margin-bottom: 1rem;
 }
+
+.stardb-app {
+  margin: 0 auto;
+  width: 90%;
+}
