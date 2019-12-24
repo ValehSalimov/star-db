@@ -14,6 +14,14 @@ import './app.css';
 import itemList from '../item-list/item-list';
 import ErrorBoundary from '../error-boundary';
 import { getAllByAltText } from '@testing-library/react';
+import {
+  PersonList,
+  PlanetList,
+  StarshipList,
+  PersonDetails,
+  PlanetDetails,
+  StarshipDetails,
+} from '../sw-components';
 
 export default class App extends Component {
   swapiService = new SwapiService();
@@ -73,25 +81,18 @@ export default class App extends Component {
         <div className="stardb-app">
           <Header />
 
-          <ItemList getData={getAllPeople} onItemSelected={() => {}}>
-            {({ name }) => <span>{name}</span>}
-          </ItemList>
+          <PersonDetails itemId={11}/>
 
-          <ItemList getData={getAllPlanets} onItemSelected={() => {}}>
-            {({ name }) => <span>{name}</span>}
-          </ItemList>
+          <PlanetDetails itemId={5}/>
 
-          {/* {planet}
-        <div className="row mb2 button-row">
-          <button
-            className="toggle-planet btn btn-warning btn-lg"
-            onClick={this.toggleRandomPlanet}>
-            Toggle Random Planet
-          </button>
-          <ErrorButton />
-        </div>
-        <PeoplePage />
-        <Row left={personDetails} right={starshipDetails} /> */}
+          <StarshipDetails itemId={9}/>
+
+          <PersonList />
+
+          <PlanetList />
+
+          <StarshipList />
+
         </div>
       </ErrorBoundary>
     );
