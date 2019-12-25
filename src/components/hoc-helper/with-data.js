@@ -3,6 +3,7 @@ import Spinner from '../spinner/spinner';
 import ErrorIndicator from '../error-indicator';
 
 const withData = View => {
+  // eslint-disable-next-line react/display-name
   return class extends Component {
     state = {
       data: null,

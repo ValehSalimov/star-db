@@ -6,7 +6,7 @@ import SwapiService from '../../services/swapi-service';
 import DummySwapiService from '../../services/dummy-swapi-service';
 import './app.css';
 import ErrorBoundary from '../error-boundary';
-import  { PeoplePage, PlanetsPage, StarshipsPage }from '../pages';
+import { PeoplePage, PlanetsPage, StarshipsPage } from '../pages';
 import { SwapiServiceProvider } from '../swapi-service-context';
 
 export default class App extends Component {
@@ -46,7 +46,6 @@ export default class App extends Component {
             <PeoplePage />
             <PlanetsPage />
             <StarshipsPage />
-
           </div>
         </SwapiServiceProvider>
       </ErrorBoundary>

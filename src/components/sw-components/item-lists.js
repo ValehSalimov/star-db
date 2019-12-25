@@ -3,17 +3,13 @@ import ItemList from '../item-list';
 import { withData, withSwapiService } from '../hoc-helper';
 
 const withChildFunction = fn => Wrapped => {
+  // eslint-disable-next-line react/display-name
   return props => {
     return <Wrapped {...props}>{fn}</Wrapped>;
   };
 };
 
 const renderName = ({ name }) => <span>{name}</span>;
-const renderModelAndName = ({ model, name }) => (
-  <span>
-    {name} ({model})
-  </span>
-);
 
 const mapPersonMethodsToProps = swapiService => {
   return {
