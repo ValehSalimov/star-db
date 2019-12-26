@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import Spinner from '../spinner';
 import ErrorIndicator from '../error-indicator';
@@ -12,6 +13,10 @@ export default class RandomPlanet extends Component {
     updateInterval: 10000
   };
   
+  static propTypes = {
+    updateInterval: PropTypes.number
+  }
+
   swapiService = new SwapiService();
 
   state = {
@@ -37,6 +42,7 @@ export default class RandomPlanet extends Component {
     });
   };
 
+  // eslint-disable-next-line no-unused-vars
   onError = (err) => {
     this.setState({
       error: true,
